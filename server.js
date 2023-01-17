@@ -49,15 +49,25 @@ app.get("/", (req, res) => {
 });
 
 app.get("/logginn", (req, res) => {
+  res.render("logginn", userLoggedIn);
+});
+
+app.get("/logginnBruker", (req, res) => {
   console.log(req.query);
   getUsers(db, req.query).then(() => {
 
-      console.log(userLoggedIn)
+    res.send(userLoggedIn);
   })
 
-
-  res.render("logginn", userLoggedIn);
 });
+
+app.get("/velkommen", (req, res) => {
+
+  
+      res.send('velkommen');
+
+  
+  });
 
 app.get("/glemtPassord", (req, res) => {
   res.render("glemtPassord");
